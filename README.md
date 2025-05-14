@@ -25,5 +25,9 @@ step2 - form 내부의 input 과 table 에 CSS 추가
 step3 
     - form.css 파일로 분리하기
     - form 내부의 input에 form-group, form-grid css 추가
-    - form.css 에 form-group, form-grid 클래스 추가하기기
+    - form.css 에 form-group, form-grid 클래스 추가하기
+step4
+    - javascript 코드 작성하기 시작
+    - Form Load Event 핸들링 하기
+    - Form Submit Event 핸들링 하기    
 
