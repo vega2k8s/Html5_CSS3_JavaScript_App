@@ -33,7 +33,7 @@ studentForm.addEventListener("submit", function (event) {
     };
 
     //유효성 체크하기
-    if(!validateStudent(studentData)){
+    if (!validateStudent(studentData)) {
         //검증체크 실패하면 리턴하기
         return;
     }
@@ -44,6 +44,12 @@ studentForm.addEventListener("submit", function (event) {
 //데이터 유효성을 체크하는 함수
 function validateStudent(student) {
 
+}
+
+// 이메일 유효성 검사
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
 }
 
 //학생목록 로드하는 함수
