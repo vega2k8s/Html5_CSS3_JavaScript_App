@@ -103,7 +103,7 @@ function loadStudents() {
     console.log("학생 목록 로드 중.....");
     fetch(`${API_BASE_URL}/api/students`) //Promise
         .then((response) => {
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error("학생 목록을 불러오는데 실패했습니다!.");
             }
             return response.json();
@@ -117,4 +117,24 @@ function loadStudents() {
 
 function renderStudentTable(students) {
     console.log(students);
+    studentTableBody.innerHTML = "";
+
+    students.forEach((student) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.studentNumber}</td>
+                    <td>${student.detail ? student.detail.address : "-"}</td>
+                    <td>${student.detail ? student.detail.phoneNumber : "-"}</td>
+                    <td>${student.detail ? student.detail.email || "-" : "-"}</td>
+                    <td>${student.detail ? student.detail.dateOfBirth || "-" : "-"}</td>
+                    <td>
+                        <button class="edit-btn" onclick="editStudent(${student.id})">수정</button>
+                        <button class="delete-btn" onclick="deleteStudent(${student.id})">삭제</button>
+                    </td>
+                `;
+
+        studentTableBody.appendChild(row);
+    });
 }
