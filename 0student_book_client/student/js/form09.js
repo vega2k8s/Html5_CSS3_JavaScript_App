@@ -46,8 +46,12 @@ studentForm.addEventListener("submit", function (event) {
     //유효한 데이터 출력하기
     //console.log(studentData);
 
-    //서버로 Student 등록 요청하기
-    createStudent(studentData);
+    if (editingStudentId) {
+
+    } else {
+        //서버로 Student 등록 요청하기
+        createStudent(studentData);
+    }
 
 });
 
@@ -236,7 +240,7 @@ function editStudent(studentId) {
             //Form에 데이터 채우기
             studentForm.name.value = student.name;
             studentForm.studentNumber.value = student.studentNumber;
-            if(student.detail) {
+            if (student.detail) {
                 studentForm.address.value = student.detail.address;
                 studentForm.phoneNumber.value = student.detail.phoneNumber;
                 studentForm.email.value = student.detail.email;
