@@ -224,12 +224,16 @@ function editStudent(studentId) {
                 //status code와 message를 확인하기
                 if (response.status === 404) {
                     //중복 오류 처리
-                    throw new Error(errorData.message || '존재하지 않는 학생입니다다.');
+                    throw new Error(errorData.message || '존재하지 않는 학생입니다.');
                 }
             }
             return response.json();
         })
-        .then()
+        .then((student) => {
+            //Form에 데이터 채우기
+            studentForm.name.value = student.name;
+            studentForm.studentNumber.value = student.studentNumber;
+        })
         .catch((error) => {
             console.log('Error : ', error);
             alert(error.message);
