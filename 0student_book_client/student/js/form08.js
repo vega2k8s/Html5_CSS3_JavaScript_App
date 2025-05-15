@@ -185,5 +185,9 @@ function deleteStudent(studentId) {
     if(!confirm(`ID = ${studentId} 인 학생을 정말로 삭제하시겠습니까?`)){
         return;
     }
-
+    console.log('삭제처리 ...');
+    fetch(`${API_BASE_URL}/api/students/${studentId}`,{
+        method: 'DELETE'
+    })
+    
 }
