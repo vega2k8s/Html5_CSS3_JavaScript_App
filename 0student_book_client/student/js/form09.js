@@ -245,11 +245,22 @@ function editStudent(studentId) {
 
             //수정 Mode 설정
             editingStudentId = studentId;
-
+            //버튼의 타이틀을 등록 => 수정으로 변경
+            submitButton.textContent = "학생 수정";
+            //취소 버튼을 활성화
+            cancelButton.style.display = 'inline-block';
         })
         .catch((error) => {
             console.log('Error : ', error);
             alert(error.message);
         });
 
+}
+
+function resetForm() {
+    //form 초기화
+    studentForm.reset();
+    editingStudentId = null;
+    submitButton.textContent = "학생 등록";
+    cancelButton.style.display = 'none';
 }
