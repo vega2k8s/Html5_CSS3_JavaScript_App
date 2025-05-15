@@ -60,15 +60,25 @@ function createStudent(studentData) {
             const errorData = await response.json();
             //status code와 message를 확인하기
             if(response.status === 409){
-                //중복 오류처리
+                //중복 오류 처리
                 throw new Error(errorData.message || '중복 되는 정보가 있습니다.');
             }else {
+                //기타 오류 처리
                 throw new Error(errorData.message || '학생 등록에 실패했습니다.')
             }
         }
         return response.json();
     })
-    .catch();
+    .then((result) => {
+        alert("학생이 성공적으로 등록되었습니다!");
+        studentForm.reset();
+        //목록 새로 고침
+        loadStudents(); 
+    })
+    .catch((error) => {
+        console.log('Error : ', error);
+        alert(error.message);
+    });
 }
 
 //데이터 유효성을 체크하는 함수
