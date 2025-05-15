@@ -207,6 +207,10 @@ function deleteStudent(studentId) {
             //목록 새로 고침
             loadStudents();
         })
+        .catch((error) => {
+            console.log('Error : ', error);
+            alert(error.message);
+        });
 
 }
 
@@ -225,5 +229,10 @@ function editStudent(studentId) {
             }
             return response.json();
         })
+        .then()
+        .catch((error) => {
+            console.log('Error : ', error);
+            alert(error.message);
+        });
 
 }
