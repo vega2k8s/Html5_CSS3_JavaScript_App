@@ -120,8 +120,10 @@ function renderStudentTable(students) {
     studentTableBody.innerHTML = "";
 
     students.forEach((student) => {
+        //<tr> 엘리먼트를 생성하기
         const row = document.createElement("tr");
-
+        
+        //<tr>의 content을 동적으로 생성
         row.innerHTML = `
                     <td>${student.name}</td>
                     <td>${student.studentNumber}</td>
@@ -135,7 +137,7 @@ function renderStudentTable(students) {
                         <button class="delete-btn" onclick="deleteStudent(${student.id})">삭제</button>
                     </td>
                 `;
-
+        //<tbody>의 아래에 <tr>을 추가시켜 준다.
         studentTableBody.appendChild(row);
     });
 }
