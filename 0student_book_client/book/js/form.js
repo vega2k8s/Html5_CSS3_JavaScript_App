@@ -24,12 +24,12 @@ bookForm.addEventListener('submit', function (e) {
         price: formData.get('price') ? parseInt(formData.get('price')) : null,
         publishDate: formData.get('publishDate') || null,
         detailRequest: {
-            description: formData.get('description').trim(),
-            language: formData.get('language').trim(),
+            description: formData.get('description').trim() || null,
+            language: formData.get('language').trim() || null,
             pageCount: formData.get('pageCount') ? parseInt(formData.get('pageCount')) : null,
-            publisher: formData.get('publisher').trim(),
-            coverImageUrl: formData.get('coverImageUrl').trim(),
-            edition: formData.get('edition').trim()
+            publisher: formData.get('publisher').trim() || null,
+            coverImageUrl: formData.get('coverImageUrl').trim() || null,
+            edition: formData.get('edition').trim() || null
         }
     };
 
@@ -56,6 +56,11 @@ function validateBook(book) {
 
     if (!book.isbn) {
         alert('ISBN을 입력해주세요.');
+        return false;
+    }
+
+    if (!book.price) {
+        alert('가격을 입력해주세요.');
         return false;
     }
 
