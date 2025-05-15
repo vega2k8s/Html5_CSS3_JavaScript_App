@@ -233,6 +233,12 @@ function editStudent(studentId) {
             //Form에 데이터 채우기
             studentForm.name.value = student.name;
             studentForm.studentNumber.value = student.studentNumber;
+            if(student.detail) {
+                studentForm.address.value = student.detail.address;
+                studentForm.phoneNumber.value = student.detail.phoneNumber;
+                studentForm.email.value = student.detail.email;
+                studentForm.dateOfBirth.value = student.detail.dateOfBirth || '';
+            }
         })
         .catch((error) => {
             console.log('Error : ', error);
