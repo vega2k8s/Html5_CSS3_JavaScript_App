@@ -101,4 +101,5 @@ function isValidEmail(email) {
 //학생목록 로드하는 함수
 function loadStudents() {
     console.log("학생 목록 로드 중.....");
+    fetch(`${API_BASE_URL}/api/students`)
 }
