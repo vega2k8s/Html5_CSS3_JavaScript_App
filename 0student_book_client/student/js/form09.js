@@ -1,5 +1,7 @@
 //전역변수
 const API_BASE_URL = "http://localhost:8080";
+//현재 수정중인 학생 ID
+let editingStudentId = null;
 
 //DOM 엘리먼트 가져오기
 const studentForm = document.getElementById("studentForm");
@@ -239,6 +241,10 @@ function editStudent(studentId) {
                 studentForm.email.value = student.detail.email;
                 studentForm.dateOfBirth.value = student.detail.dateOfBirth || '';
             }
+
+            //수정 Mode 설정
+            editingStudentId = studentId;
+            
         })
         .catch((error) => {
             console.log('Error : ', error);
