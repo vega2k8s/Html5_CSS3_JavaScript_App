@@ -127,7 +127,14 @@ function loadStudents() {
         .then((students) => renderStudentTable(students))
         .catch((error) => {
             console.log("Error: " + error);
-            alert("학생 목록을 불러오는데 실패했습니다!.");
+            showError("학생 목록을 불러오는데 실패했습니다!.");
+            studentTableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; color: #dc3545;">
+                        오류: 데이터를 불러올 수 없습니다.
+                    </td>
+                </tr>
+            `;
         });
 }
 
