@@ -187,7 +187,7 @@ function createStudent(studentData) {
             return response.json();
         })
         .then((result) => {
-            alert("학생이 성공적으로 등록되었습니다!");
+            showSuccess("학생이 성공적으로 등록되었습니다!");
             //studentForm.reset();
             resetForm();
             //목록 새로 고침
@@ -195,7 +195,7 @@ function createStudent(studentData) {
         })
         .catch((error) => {
             console.log('Error : ', error);
-            alert(error.message);
+            showError(error.message);
         });
 }
 
@@ -204,7 +204,7 @@ function deleteStudent(studentId) {
     if (!confirm(`ID = ${studentId} 인 학생을 정말로 삭제하시겠습니까?`)) {
         return;
     }
-    console.log('삭제처리 ...');
+
     fetch(`${API_BASE_URL}/api/students/${studentId}`, {
         method: 'DELETE'
     })
@@ -221,13 +221,13 @@ function deleteStudent(studentId) {
                     throw new Error(errorData.message || '학생 삭제에 실패했습니다.')
                 }
             }
-            alert("학생이 성공적으로 삭제되었습니다!");
+            showSuccess("학생이 성공적으로 삭제되었습니다!");
             //목록 새로 고침
             loadStudents();
         })
         .catch((error) => {
             console.log('Error : ', error);
-            alert(error.message);
+            showError(error.message);
         });
 
 }
@@ -267,7 +267,7 @@ function editStudent(studentId) {
         })
         .catch((error) => {
             console.log('Error : ', error);
-            alert(error.message);
+            showError(error.message);
         });
 
 }
@@ -279,6 +279,7 @@ function resetForm() {
     submitButton.textContent = "학생 등록";
     //취소버튼 사라짐
     cancelButton.style.display = 'none';
+    clearMessages();
 }
 
 // 학생 수정 처리하는 함수
@@ -304,7 +305,7 @@ function updateStudent(studentId, studentData) {
             return response.json();
         })
         .then((result) => {
-            alert("학생이 성공적으로 수정되었습니다!");
+            showSuccess("학생이 성공적으로 수정되었습니다!");
             //등록모드로 초기화
             resetForm();
             //목록 새로 고침
@@ -312,7 +313,7 @@ function updateStudent(studentId, studentData) {
         })
         .catch((error) => {
             console.log('Error : ', error);
-            alert(error.message);
+            showError(error.message);
         });
 }
 
